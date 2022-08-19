@@ -16,6 +16,15 @@ public class CustomView extends View {
     public Path path;
     //public static final int size = 200;
 
+
+
+
+
+//    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+//        super(context, attrs, defStyleAttr, defStyleRes);
+//        init(attrs);
+//    }
+
     public CustomView(Context context) {
         super(context);
         init(null);
@@ -28,11 +37,6 @@ public class CustomView extends View {
 
     public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(attrs);
-    }
-
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         init(attrs);
     }
 
@@ -69,8 +73,12 @@ public class CustomView extends View {
                 break;
             default:
                 return false;
+
         }
+        
+
         postInvalidate();
         return true;
+
     }
 }

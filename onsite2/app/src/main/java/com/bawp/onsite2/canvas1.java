@@ -2,6 +2,7 @@ package com.bawp.onsite2;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -60,11 +61,23 @@ public class canvas1 extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         model = new ViewModelProvider(requireActivity()).get(viewmodel.class);
+        model.getSelectedItem().observe(getViewLifecycleOwner(), new Observer<CustomView>() {
+            @Override
+
+            public void onChanged(CustomView item) {
+                customView.path = item.path;
+                customView.postInvalidate();
+
+
+            }
+        });
+
         switchbt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View item) {
                 Log.v("In Fragment1", customView.toString());
                 model.selectItem(customView);
+
             }
         });
     }

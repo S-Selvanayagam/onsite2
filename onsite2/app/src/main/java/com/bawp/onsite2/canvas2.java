@@ -20,7 +20,7 @@ public class canvas2 extends Fragment {
 
     private String mParam1;
     private String mParam2;
-    CustomView c;
+    CustomView customView;
 
     public canvas2() {
         // Required empty public constructor
@@ -50,21 +50,24 @@ public class canvas2 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v= inflater.inflate(R.layout.fragment_canvas2, container, false);
-        c=v.findViewById(androidx.appcompat.R.id.custom);
+        customView =v.findViewById(R.id.custom);
         return v;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         viewmodel model = new ViewModelProvider(requireActivity()).get(viewmodel.class);
+
         model.getSelectedItem().observe(getViewLifecycleOwner(), new Observer<CustomView>() {
             @Override
-            public void onChanged(CustomView item) {
-                c.path = item.path;
-                c.postInvalidate();
 
-                Log.d("ola", c.toString());
+            public void onChanged(CustomView item) {
+                customView.path = item.path;
+                customView.postInvalidate();
+
+                Log.d("ola", customView.toString());
             }
         });
     }
